@@ -1,1 +1,112 @@
+import random
 
+# 1. Function Return Type TANPA Parameter
+def akucintaindonesia():
+    quotes = [
+        "Tapi Kali ini saya akan lawan!", 
+        "Diantara ku dan Sawit.", 
+        "Insyaallah, nilai uts 100.", 
+        "plis kakak yang cantik, ganteng, baik hati, penyayang, acc laprak dongs.",
+        "Kata mamah, acc laprak masuk surga",
+    ]
+    return random.choice(quotes)
+
+# 2. Function Return Type DENGAN Parameter
+def hitung_anggaran_mbg(jumlah_siswa, harga_per_porsi):
+    return jumlah_siswa * harga_per_porsi
+
+class InventoriMBG:
+    def __init__(self):
+        # Implementasi Variabel, Tipe Data, dan Array (Modul 1 & 2)
+        self.daftar_menu = ["Susu Murni Nasional", "Nasi Goreng Pak Hambali", "Sayur Segar(?)"]
+    
+    # 3. Method Non-return Type TANPA Parameter
+    def tampilkan_menu(self):
+        print("\n--- Daftar Menu MBG Saat Ini ---")
+        
+        # Implementasi Pengkondisian (Modul 3)
+        if len(self.daftar_menu) == 0:
+            print("Menu kosong, ni stok kena efisensi anggaran.")
+        else:
+            # Implementasi Perulangan FOR (Modul 4)
+            for i in range(len(self.daftar_menu)):
+                print(f"{i+1}. {self.daftar_menu[i]}")
+        print("--------------------------------")
+        
+    # 4. Method Non-return Type DENGAN Parameter
+    def tambah_menu(self, menu_baru):
+        # Implementasi Pengkondisian (Modul 3)
+        if menu_baru == "":
+            print(">> P, Nama menu nggak boleh kosong kocak")
+        else:
+            self.daftar_menu.append(menu_baru)
+            print(f">> Berhasil! '{menu_baru}' ditambahkan ke inventori.")
+
+
+def main():
+
+    print("Kelompok\t: Kelompok 44")
+    print("Anggota\t\t: 1. Arya Danendra (21120126140101)")
+    print("\t\t  2. Raditya Rasyadul Ihsan (21120126140109)")
+    print("\t\t  3. Fitriana Rossa Hiardi (21120126140156)")
+    print("Shift\t\t: Shift 7")
+    
+    print("\n=======================================================")
+    print("    SISTEM INVENTORI MBG (My Mine MBG Gweh)       ")
+    print("=======================================================")
+    
+    # Memanggil Function Return Type Tanpa Parameter
+    print(f"Quote of the day: {akucintaindonesia()}")
+    
+    # Inisialisasi Objek dari Class
+    sistem = InventoriMBG()
+    
+    # Implementasi Perulangan WHILE (Modul 4)
+    while True:
+        print("\n[ Menu Utama ]")
+        print("1. Tampilkan Menu MBG (Read Array)")
+        print("2. Tambah Menu Baru (Update Array)")
+        print("3. Hitung Anggaran MBG")
+        print("4. Keluar")
+        
+        pilihan = input("Pilih aksi (1-4): ")
+        
+        # Implementasi Pengkondisian Lanjutan (Modul 3)
+        if pilihan == '1':
+            # Memanggil Method Non-return Type Tanpa Parameter
+            sistem.tampilkan_menu()
+            
+        elif pilihan == '2':
+            menu_baru = input("Masukkan nama menu baru: ")
+            # Memanggil Method Non-return Type Dengan Parameter
+            sistem.tambah_menu(menu_baru)
+            
+        elif pilihan == '3':
+            try:
+                siswa = int(input("Berapa jumlah siswa yang dikasih makan? "))
+                harga = int(input("Harga per porsi? Rp "))
+                
+                # Memanggil Function Return Type Dengan Parameter
+                total_anggaran = hitung_anggaran_mbg(siswa, harga)
+                
+                print(f">> Total anggaran yang ditarik dari uang rakyat: Rp {total_anggaran:,}")
+                
+                if total_anggaran >= 10000000:
+                    print(">> Anggarannya gede banget jir, mendiong buat tunjangan dpr gasih")
+                elif total_anggaran < 0:
+                    print(">> Lho kok minus? Kalo korup minimal bagi-bagi bg (true ending)")
+                else:
+                    print(">> Anggaran aman, tumben ngga dikorup.")
+            except ValueError:
+                print(">> Inputnya angka aja jir, jgn huruf.")
+                
+        elif pilihan == '4':
+            print("\nBye bye! Lopyu <3.")
+            break
+            
+        else:
+            print(">> pilihannya cuma 1, 2, 3, atau 4 aja weh.")
+
+# Menjalankan program utama
+if __name__ == "__main__":
+    main()
